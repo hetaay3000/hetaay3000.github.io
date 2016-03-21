@@ -56,12 +56,13 @@ function fileLoadShimCode(files, ROMHandler) {
 function fileLoadBIOS() {
     fileLoadShimCode(this.files, attachBIOS);
 }
-function fileLoadROM() {
-    fileLoadShimCode(this.files, attachROM);
-}
-function fileLoadRom(file){
-    files = [file];
+function fileLoadROM(file) {
+    if(this == undefined){
+        var files = [file];
     fileLoadShimCode(file, attachROM);
+    }
+    else if(file == null){
+    fileLoadShimCode(this.files, attachROM);}
 }
 function downloadFile(fileName, registrationHandler) {
     var ajax = new XMLHttpRequest();
