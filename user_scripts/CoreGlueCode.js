@@ -259,7 +259,7 @@ function registerROM() {
 
 var crushit = function() {
     downloadBIOS();
-    if(games.contains(location.hash.substr(1))){
+    if(games.includes(location.hash.substr(1))){
         fileLoadROM(downloadROM(nameGame()));}
         IodineGUI.Iodine.play();       
     }
