@@ -232,7 +232,7 @@ var games = {
 };
 
 function nameGame(){
-var gamename = "Binaries/" + location.hash.susbtr(1) + ".gba";
+var gamename = "Binaries/" + location.hash.substr(1) + ".gba";
     return gamename;
 }
 
@@ -240,7 +240,7 @@ function downloadBIOS() {
     downloadFile("Binaries/gba_bios.bin", registerBIOS);
 }
 function registerBIOS() {
-    processDownload(this, fileLoadBIOS);
+    processDownload(this, attachBIOS);
     downloadROM(location.hash.substr(1));
 }
 function downloadROM(gamename) {
@@ -259,7 +259,7 @@ function registerROM() {
 
 var crushit = function() {
     downloadBIOS();
-    if(games.contains(location.hash.susbtr(1))){
+    if(games.contains(location.hash.substr(1))){
         fileLoadROM(downloadROM(nameGame()));}
         IodineGUI.Iodine.play();       
     }
