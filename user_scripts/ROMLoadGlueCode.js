@@ -59,6 +59,10 @@ function fileLoadBIOS() {
 function fileLoadROM() {
     fileLoadShimCode(this.files, attachROM);
 }
+function fileLoadRom(file){
+    files = [file];
+    fileLoadShimCode(file, attachROM);
+}
 function downloadFile(fileName, registrationHandler) {
     var ajax = new XMLHttpRequest();
     ajax.onload = registrationHandler;

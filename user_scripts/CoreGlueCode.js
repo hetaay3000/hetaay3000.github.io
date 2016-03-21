@@ -246,7 +246,7 @@ function registerBIOS() {
 function downloadROM(gamename) {
     IodineGUI.Iodine.pause();
     writeRedTemporaryText("Downloading " + gamename);
-    downloadFile("Binaries/" + gamename + ".gba", registerROM);
+    downloadFile(gamename, registerROM);
 }
 function registerROM() {
     clearTempString();
