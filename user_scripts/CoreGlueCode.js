@@ -236,12 +236,36 @@ var gamename = "Binaries/" + location.hash.substr(1) + ".gba";
     return gamename;
 }
 
-function downloadBIOS() {
-    downloadFile("Binaries/gba_bios.bin", registerBIOS);
+function downloadBIOS(ROMHandler) {
+    ROMHandler = attachBIOS;
+    var file = downloadFile("Binaries/gba_bios.bin", registerBIOS);
+try {
+                var binaryHandle = new FileReader();
+                binaryHandle.onloadend = function () {
+                    ROMHandler(this.result);
+                }
+                binaryHandle.readAsArrayBuffer(files[files.length - 1]);
+            }
+            catch (error) {
+                try {
+                    var result = files[files.length - 1].getAsBinary();
+                    var resultConverted = [];
+                    for (var index = 0; index < result.length; ++index) {
+                        resultConverted[index] = result.charCodeAt(index) & 0xFF;
+                    }
+                    ROMHandler(resultConverted);
+                }
+                catch (error) {
+                    alert("Could not load the processed ROM file!");
+                }
+            }
+        
 }
+
+
 function registerBIOS() {
-    processDownload(this, attachBIOS);
-    downloadROM(location.hash.substr(1));
+    //processDownload(this, attachBIOS);
+    ////downloadROM(location.hash.substr(1));
 }
 function downloadROM(gamename) {
     IodineGUI.Iodine.pause();
