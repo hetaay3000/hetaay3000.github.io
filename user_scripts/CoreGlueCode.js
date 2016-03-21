@@ -239,6 +239,7 @@ var gamename = "Binaries/" + location.hash.substr(1) + ".gba";
 function downloadBIOS(ROMHandler) {
     ROMHandler = attachBIOS;
     var file = downloadFile("Binaries/gba_bios.bin", registerBIOS);
+    var files = [file];
 try {
                 var binaryHandle = new FileReader();
                 binaryHandle.onloadend = function () {
