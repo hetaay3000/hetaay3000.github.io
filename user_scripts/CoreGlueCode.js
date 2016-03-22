@@ -236,14 +236,13 @@ var gamename = "Binaries/" + location.hash.substr(1) + ".gba";
     return gamename;
 }
 
-function downloadBIOS(ROMHandler) {
-    ROMHandler = attachBIOS;
+function downloadBIOS() {
     var file = downloadFile("Binaries/gba_bios.bin", registerBIOS);
     var files = [file];
 try {
                 var binaryHandle = new FileReader();
                 binaryHandle.onloadend = function () {
-                    ROMHandler(this.result);
+                    attachBIOS(this.result);
                 }
                 binaryHandle.readAsArrayBuffer(files[files.length - 1]);
             }
@@ -254,7 +253,7 @@ try {
                     for (var index = 0; index < result.length; ++index) {
                         resultConverted[index] = result.charCodeAt(index) & 0xFF;
                     }
-                    ROMHandler(resultConverted);
+                    attachBIOS(resultConverted);
                 }
                 catch (error) {
                     alert("Could not load the processed ROM file!");
