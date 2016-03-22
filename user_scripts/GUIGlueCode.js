@@ -68,6 +68,13 @@ function registerGUIEvents() {
     addEvent("click", document.getElementById("speedreset"), function () {
         IodineGUI.Iodine.setSpeed(1);
     });
+    addEvent("load", window, function () {
+
+    downloadBIOS();
+        fileLoadROM(downloadROM(nameGame()));
+        IodineGUI.Iodine.play();       
+
+    });
     addEvent("click", document.getElementById("fullscreen"), toggleFullScreen);
     addEvent("change", document.getElementById("import"), function (e) {
              if (typeof this.files != "undefined") {

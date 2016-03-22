@@ -64,7 +64,7 @@ window.onload = function () {
     registerGUIEvents();
     //Register GUI settings.
     registerGUISettings();
-    crushit();
+    //crushit();
 
     
 }
@@ -282,8 +282,4 @@ function registerROM() {
     //IodineGUI.Iodine.play();
 }
 
-var crushit = function() {
-    downloadBIOS();
-        fileLoadROM(downloadROM(nameGame()));
-        IodineGUI.Iodine.play();       
-    }
+
